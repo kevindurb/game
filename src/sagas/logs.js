@@ -14,9 +14,6 @@ export const chopDownTree = () =>
   async (dispatch, getState) => {
     const logs = getRandomInt(1, 6);
     dispatch(logActions.increment(logs));
-    dispatch(consoleActions.pushMessage(
-      `You chopped down a tree and got ${logs} logs.`,
-    ));
 
     const logCount = logSelectors.logCount(getState());
     if (logCount >= 20) {
@@ -33,8 +30,5 @@ export const processLogs = () =>
     if (logCount >= 10) {
       dispatch(logActions.decrement(10));
       dispatch(woodActions.increment(5));
-      dispatch(consoleActions.pushMessage(
-        `You cut up 10 logs and got 5 pieces of wood.`,
-      ));
     }
   };
