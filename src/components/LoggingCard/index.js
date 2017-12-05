@@ -10,7 +10,7 @@ class LoggingCard extends React.PureComponent {
   renderProcessLogsButton() {
     if (this.props.showWood) {
       return (
-        <button onClick={this.props.onProcessLogs}>Process logs</button>
+        <button onClick={this.props.onProcessLogs}>Cut logs (-10 logs)</button>
       );
     }
   }
