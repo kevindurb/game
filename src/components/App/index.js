@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import LoggingCard from '../LoggingCard';
 import Console from '../Console';
+import Tasks from '../Tasks';
 import './styles.css';
 import * as appSagas from '../../sagas/app';
 
@@ -14,6 +15,7 @@ class App extends Component {
     return (
       <div className="App">
         <LoggingCard />
+        <Tasks />
         <Console />
       </div>
     );
