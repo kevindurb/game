@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import './styles.css';
 
 import * as logSagas from '../../sagas/logs';
+import * as logSelectors from '../../selectors/logs';
 
 class LoggingCard extends React.PureComponent {
   render() {
@@ -17,11 +18,9 @@ class LoggingCard extends React.PureComponent {
   }
 }
 
-const mapState = () => {
-  return (state) => ({
-    logs: state.logs,
-  });
-};
+const mapState = (state) => ({
+  logs: logSelectors.logCount(state),
+});
 
 const mapDispatch = {
   onChopTree: logSagas.chopDownTree,
