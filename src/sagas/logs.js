@@ -4,23 +4,26 @@ import * as woodSagas from '../sagas/wood';
 import * as logSelectors from '../selectors/logs';
 import * as consoleActions from '../ducks/console';
 
-function getRandomInt(min, max) {
+const delay = (t) => new Promise((r) => setTimeout(r, t));
+
+const getRandomInt = (min, max) => {
   min = Math.ceil(min);
   max = Math.floor(max);
   return Math.floor(Math.random() * (max - min)) + min;
-}
+};
 
 export const chopDownTree = () =>
   async (dispatch, getState) => {
     const logs = getRandomInt(1, 6);
-    dispatch(logActions.increment(logs));
+
+    for (let i = 0; i < logs; i++) {
+      await delay(200);
+      dispatch(logActions.increment(1));
+    }
 
     const logCount = logSelectors.logCount(getState());
-    if (logCount >= 20) {
+    if (logCount >= 100) {
       dispatch(woodSagas.showWood());
-      dispatch(consoleActions.pushMessage(
-        `I wonder if you could use those logs if you cut them into wood pieces...`,
-      ));
     }
   };
 
