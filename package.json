@@ -1,0 +1,20 @@
+{
+  "name": "liberum",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "build-watch": "tsc --watch",
+    "live-server": "live-server --watch=dist,index.html ."
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@tsconfig/recommended": "^1.0.3",
+    "@tsconfig/strictest": "^2.0.3",
+    "live-server": "^1.2.2",
+    "typescript": "^5.4.2"
+  }
+}
