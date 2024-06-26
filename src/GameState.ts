@@ -1,5 +1,5 @@
-import { Vector2d } from './util/Vector2d.js';
 import { Angle } from './util/Angle.js';
+import { Vector2d } from './util/Vector2d.js';
 
 export class GameState {
   public ship = {

@@ -1,8 +1,8 @@
 import { Compositor } from '../Compositor.js';
-import { MyShip } from '../entities/MyShip.js';
 import type { GameState } from '../GameState.js';
-import { KeyboardInput, Keys, KeyState } from '../KeyboardInput.js';
+import { KeyState, KeyboardInput, Keys } from '../KeyboardInput.js';
 import type { VideoBuffer } from '../VideoBuffer.js';
+import { MyShip } from '../entities/MyShip.js';
 
 export class Game {
   private keyboardInput = new KeyboardInput();

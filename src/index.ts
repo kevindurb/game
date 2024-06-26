@@ -1,8 +1,8 @@
 import { GameState } from './GameState.js';
-import { Game } from './screens/Game.js';
 import { Timer } from './Timer.js';
-import { Vector2d } from './util/Vector2d.js';
 import { VideoBuffer } from './VideoBuffer.js';
+import { Game } from './screens/Game.js';
+import { Vector2d } from './util/Vector2d.js';
 
 export async function main() {
   const videoBuffer = new VideoBuffer(

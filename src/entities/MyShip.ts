@@ -1,6 +1,6 @@
 import type { GameState } from '../GameState.js';
-import { Vector2d } from '../util/Vector2d.js';
 import type { VideoBuffer } from '../VideoBuffer.js';
+import { Vector2d } from '../util/Vector2d.js';
 
 const ROTATION_VELOCITY = 100;
 const MAX_THRUST = 10;
