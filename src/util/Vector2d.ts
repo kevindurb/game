@@ -15,4 +15,8 @@ export class Vector2d {
     this.y *= val;
     return this;
   }
+
+  copy() {
+    return new Vector2d(this.x, this.y);
+  }
 }
