@@ -1,5 +1,5 @@
 export class Angle {
-  public degrees = 0;
+  constructor(public degrees = 0) {}
 
   public get radians() {
     return this.degrees * (Math.PI / 180);
