@@ -1,5 +1,5 @@
 import { GameState } from './GameState.js';
-import { Game } from './screens/Game';
+import { Game } from './screens/Game.js';
 import { Timer } from './Timer.js';
 
 export async function main() {
