@@ -4,9 +4,10 @@
   "description": "",
   "type": "module",
   "scripts": {
+    "start": "concurrently --names build,serve --prefix-colors cyan,magenta npm:build-watch npm:live-server",
     "build": "tsc",
-    "build-watch": "tsc --watch",
-    "live-server": "live-server --watch=dist,index.html ."
+    "build-watch": "tsc --watch --pretty --preserveWatchOutput",
+    "live-server": "live-server --no-browser --wait=100 --watch=dist,index.html ."
   },
   "keywords": [],
   "author": "",
@@ -14,6 +15,7 @@
   "devDependencies": {
     "@tsconfig/recommended": "^1.0.3",
     "@tsconfig/strictest": "^2.0.3",
+    "concurrently": "^8.2.2",
     "live-server": "^1.2.2",
     "typescript": "^5.4.2"
   }
