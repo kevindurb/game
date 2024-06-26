@@ -7,7 +7,8 @@
     "start": "concurrently --names build,serve --prefix-colors cyan,magenta npm:build-watch npm:live-server",
     "build": "tsc",
     "build-watch": "tsc --watch --pretty --preserveWatchOutput",
-    "live-server": "live-server --no-browser --wait=100 --watch=dist,index.html ."
+    "live-server": "live-server --no-browser --wait=100 --watch=dist,index.html .",
+    "package": "mkdir public && cp -r ./dist ./public/dist && cp index.html ./public"
   },
   "keywords": [],
   "author": "",
