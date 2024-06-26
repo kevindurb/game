@@ -28,9 +28,7 @@ export class KeyboardInput {
   handleEvent(event: KeyboardEvent) {
     const { code } = event;
 
-    if (!this.keyMap.has(code)) {
-      return;
-    }
+    if (!this.keyMap.has(code)) return;
 
     event.preventDefault();
 
@@ -39,19 +37,18 @@ export class KeyboardInput {
         ? KeyState.Pressed
         : KeyState.Released;
 
-    if (this.keyStates.get(code) === keyState) {
-      return;
-    }
+    if (this.keyStates.get(code) === keyState) return;
 
     this.keyStates.set(code, keyState);
     this.keyMap.get(code)?.(keyState);
   }
 
-  listenTo(window: Window) {
-    [KeyEventType.KeyUp, KeyEventType.KeyDown].forEach((eventName) => {
-      window.addEventListener(eventName, (event) => {
-        this.handleEvent(event as KeyboardEvent);
-      });
-    });
+  listenTo(eventTarget: EventTarget) {
+    eventTarget.addEventListener(KeyEventType.KeyUp, (event) =>
+      this.handleEvent(event as KeyboardEvent),
+    );
+    eventTarget.addEventListener(KeyEventType.KeyDown, (event) =>
+      this.handleEvent(event as KeyboardEvent),
+    );
   }
 }
