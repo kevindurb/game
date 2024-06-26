@@ -1,4 +1,3 @@
-type KeyState = 'Pressed' | 'Released';
 type KeyCallback = (keyState: KeyState) => void;
 
 export enum Keys {
@@ -6,6 +5,16 @@ export enum Keys {
   A = 'KeyA',
   S = 'KeyS',
   D = 'KeyD',
+}
+
+export enum KeyState {
+  Pressed = 'Pressed',
+  Released = 'Released',
+}
+
+enum KeyEventType {
+  KeyDown = 'keydown',
+  KeyUp = 'keyup',
 }
 
 export class KeyboardInput {
@@ -25,20 +34,21 @@ export class KeyboardInput {
 
     event.preventDefault();
 
-    const keyState: KeyState =
-      event.type === 'keydown' ? 'Pressed' : 'Released';
+    const keyState =
+      event.type === KeyEventType.KeyDown
+        ? KeyState.Pressed
+        : KeyState.Released;
 
     if (this.keyStates.get(code) === keyState) {
       return;
     }
 
     this.keyStates.set(code, keyState);
-
-    this.keyMap.get(code)!(keyState);
+    this.keyMap.get(code)?.(keyState);
   }
 
   listenTo(window: Window) {
-    ['keydown', 'keyup'].forEach((eventName) => {
+    [KeyEventType.KeyUp, KeyEventType.KeyDown].forEach((eventName) => {
       window.addEventListener(eventName, (event) => {
         this.handleEvent(event as KeyboardEvent);
       });
