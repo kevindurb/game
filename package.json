@@ -5,8 +5,9 @@
   "type": "module",
   "scripts": {
     "start": "concurrently --names build,serve --prefix-colors cyan,magenta npm:build-watch npm:live-server",
-    "lint": "biome lint ./src",
-    "format": "biome format --write ./src",
+    "lint": "biome lint",
+    "format": "biome format --write",
+    "check": "biome check --write",
     "build": "tsc",
     "build-watch": "tsc --watch --pretty --preserveWatchOutput",
     "live-server": "live-server --no-browser --wait=100 --watch=dist,index.html .",
