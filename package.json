@@ -21,7 +21,7 @@
     "@tsconfig/recommended": "^1.0.3",
     "@tsconfig/strictest": "^2.0.3",
     "concurrently": "^8.2.2",
-    "husky": "^9.0.11",
+    "lefthook": "^1.6.18",
     "live-server": "^1.2.2",
     "typescript": "^5.4.2"
   }
