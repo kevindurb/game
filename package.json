@@ -10,8 +10,7 @@
     "check": "biome check --write",
     "build": "tsc",
     "build-watch": "tsc --watch --pretty --preserveWatchOutput",
-    "live-server": "live-server --no-browser --wait=100 --watch=dist,index.html .",
-    "package": "mkdir public && cp -r ./dist ./public/dist && cp index.html ./public",
+    "live-server": "live-server --no-browser --wait=100 --watch=public public",
     "prepare": "husky"
   },
   "keywords": [],
