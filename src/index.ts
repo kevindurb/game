@@ -21,6 +21,10 @@ export async function main() {
   timer.start();
 
   document.body.append(videoBuffer.canvas);
+
+  window.addEventListener('resize', () => {
+    videoBuffer.size = new Vector2d(window.innerWidth, window.innerHeight);
+  });
 }
 
 main();

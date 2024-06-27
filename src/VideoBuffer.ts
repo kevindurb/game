@@ -1,9 +1,18 @@
-import type { Vector2d } from './util/Vector2d.js';
+import { Vector2d } from './util/Vector2d.js';
 
 export class VideoBuffer {
   public canvas = document.createElement('canvas');
 
-  constructor(public size: Vector2d) {
+  constructor(size: Vector2d) {
+    this.canvas.width = size.x;
+    this.canvas.height = size.y;
+  }
+
+  public get size() {
+    return new Vector2d(this.canvas.width, this.canvas.height);
+  }
+
+  public set size(size: Vector2d) {
     this.canvas.width = size.x;
     this.canvas.height = size.y;
   }

@@ -1,11 +1,14 @@
 import type { GameState } from '../GameState.js';
+import type { IDrawable } from '../IDrawable.js';
 import type { VideoBuffer } from '../VideoBuffer.js';
 import { Vector2d } from '../util/Vector2d.js';
 
 const ROTATION_VELOCITY = 100;
 const MAX_THRUST = 10;
 
-export class MyShip {
+export class MyShip implements IDrawable {
+  private size = new Vector2d(48, 64);
+
   constructor(private state: GameState) {}
 
   update() {
@@ -33,8 +36,6 @@ export class MyShip {
     if (rotation.degrees < 0) rotation.degrees += 360;
   }
 
-  draw(_: VideoBuffer) {}
-
   setAccelForward() {
     this.state.ship.acceleration.y = MAX_THRUST;
   }
@@ -48,14 +49,33 @@ export class MyShip {
   }
 
   setTurnClockwise() {
-    this.state.ship.rotationDirection = 1;
+    this.state.ship.rotationDirection = -1;
   }
 
   setTurnCounterClockwise() {
-    this.state.ship.rotationDirection = -1;
+    this.state.ship.rotationDirection = 1;
   }
 
   setTurnStop() {
     this.state.ship.rotationDirection = 0;
+  }
+
+  draw({ size, context }: VideoBuffer) {
+    const {
+      ship: { rotation },
+    } = this.state;
+    const { x: width, y: height } = this.size;
+    const { x, y } = size.copy().divide(2);
+
+    context.fillStyle = 'blue';
+
+    context.translate(x, y);
+    context.rotate(-rotation.radians);
+    context.beginPath();
+    context.moveTo(width / -2, height / 2);
+    context.lineTo(width / 2, height / 2);
+    context.lineTo(0, height / -2);
+    context.lineTo(width / -2, height / 2);
+    context.fill();
   }
 }

@@ -1,14 +1,11 @@
+import type { IDrawable } from './IDrawable.js';
 import type { VideoBuffer } from './VideoBuffer.js';
 
-interface Drawable {
-  draw: (videoBuffer: VideoBuffer) => void;
-}
-
 export class Compositor {
-  private layers: Drawable[] = [];
+  private layers: IDrawable[] = [];
   constructor(private videoBuffer: VideoBuffer) {}
 
-  push(layer: Drawable) {
+  push(layer: IDrawable) {
     this.layers.push(layer);
   }
 

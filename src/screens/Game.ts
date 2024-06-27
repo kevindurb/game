@@ -46,7 +46,7 @@ export class Game {
       }
     });
 
-    this.keyboardInput.addMapping(Keys.A, (state) => {
+    this.keyboardInput.addMapping(Keys.D, (state) => {
       if (state === KeyState.Pressed) {
         this.myShip.setTurnClockwise();
       } else {
