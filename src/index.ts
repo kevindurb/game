@@ -11,7 +11,8 @@ export async function main() {
   const gameState = new GameState();
   const gameScreen = new Game(gameState, videoBuffer);
 
-  const gameLoop = () => {
+  const gameLoop = (deltaTime: number) => {
+    gameState.deltaTime = deltaTime;
     gameScreen.update();
     gameScreen.draw();
   };
@@ -19,7 +20,6 @@ export async function main() {
   const timer = new Timer(1 / 60, gameLoop);
   timer.start();
 
-  videoBuffer.canvas.style.position = 'fixed';
   document.body.append(videoBuffer.canvas);
 }
 

@@ -33,7 +33,7 @@ export class MyShip {
     if (rotation.degrees < 0) rotation.degrees += 360;
   }
 
-  draw(videoBuffer: VideoBuffer) {}
+  draw(_: VideoBuffer) {}
 
   setAccelForward() {
     this.state.ship.acceleration.y = MAX_THRUST;

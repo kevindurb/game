@@ -8,4 +8,8 @@ export class Angle {
   public set radians(radians: number) {
     this.degrees = radians * (180 / Math.PI);
   }
+
+  public valueOf() {
+    return { degrees: this.degrees, radians: this.radians };
+  }
 }
