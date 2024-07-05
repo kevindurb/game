@@ -3,8 +3,8 @@ import type { IDrawable } from '../IDrawable.js';
 import type { VideoBuffer } from '../VideoBuffer.js';
 import { Vector2d } from '../util/Vector2d.js';
 
-const ROTATION_VELOCITY = 100;
-const MAX_THRUST = 10;
+const ROTATION_VELOCITY = 200;
+const MAX_THRUST = 100;
 
 export class MyShip implements IDrawable {
   private size = new Vector2d(48, 64);

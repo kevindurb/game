@@ -10,9 +10,10 @@ export class Compositor {
   }
 
   draw() {
-    this.videoBuffer.clear();
+    this.videoBuffer.reset();
+    this.videoBuffer.context.save();
     for (const layer of this.layers) {
-      this.videoBuffer.reset();
+      this.videoBuffer.context.restore();
       layer.draw(this.videoBuffer);
     }
   }

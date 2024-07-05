@@ -3,6 +3,7 @@ import type { GameState } from '../GameState.js';
 import { KeyState, KeyboardInput, Keys } from '../KeyboardInput.js';
 import type { VideoBuffer } from '../VideoBuffer.js';
 import { MyShip } from '../entities/MyShip.js';
+import { SpaceBackground } from '../entities/SpaceBackground.js';
 
 export class Game {
   private keyboardInput = new KeyboardInput();
@@ -15,6 +16,8 @@ export class Game {
   ) {
     this.compositor = new Compositor(this.videoBuffer);
     this.myShip = new MyShip(this.gameState);
+
+    this.compositor.push(new SpaceBackground(this.gameState));
     this.compositor.push(this.myShip);
 
     this.setupInputMappings();
