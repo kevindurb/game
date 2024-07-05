@@ -25,7 +25,7 @@ export class KeyboardInput {
     this.keyMap.set(code, callback);
   }
 
-  handleEvent(event: KeyboardEvent) {
+  private handleEvent(event: KeyboardEvent) {
     const { code } = event;
 
     if (!this.keyMap.has(code)) return;

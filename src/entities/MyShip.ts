@@ -31,10 +31,12 @@ export class MyShip implements IDrawable {
     velocity.add(rotatedAccel.multiply(deltaTime));
     location.add(velocity.copy().multiply(deltaTime));
 
-    const rotationDelta = rotationDirection * (ROTATION_VELOCITY * deltaTime);
-    rotation.degrees += rotationDelta;
-    if (rotation.degrees > 360) rotation.degrees -= 360;
-    if (rotation.degrees < 0) rotation.degrees += 360;
+    if (rotationDirection) {
+      const rotationDelta = rotationDirection * (ROTATION_VELOCITY * deltaTime);
+      rotation.degrees += rotationDelta;
+      if (rotation.degrees > 360) rotation.degrees -= 360;
+      if (rotation.degrees < 0) rotation.degrees += 360;
+    }
 
     const drag = new Vector2d(
       velocity.x > 0
@@ -70,6 +72,11 @@ export class MyShip implements IDrawable {
 
   setTurnStop() {
     this.state.ship.rotationDirection = 0;
+  }
+
+  setAccelVector(vec: Vector2d) {
+    this.state.ship.rotation.radians = Math.atan(vec.y / vec.x);
+    console.log(this.state.ship.rotation.radians, Math.atan(vec.y / vec.x));
   }
 
   draw({ size, context }: VideoBuffer) {

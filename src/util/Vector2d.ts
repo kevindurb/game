@@ -4,25 +4,45 @@ export class Vector2d {
     public y = 0,
   ) {}
 
-  add({ x, y }: Vector2d) {
-    this.x += x;
-    this.y += y;
+  add(val: number | Vector2d) {
+    if (val instanceof Vector2d) {
+      this.x += val.x;
+      this.y += val.y;
+      return this;
+    }
+    this.x += val;
+    this.y += val;
     return this;
   }
 
-  subtract({ x, y }: Vector2d) {
-    this.x -= x;
-    this.y -= y;
+  subtract(val: number | Vector2d) {
+    if (val instanceof Vector2d) {
+      this.x -= val.x;
+      this.y -= val.y;
+      return this;
+    }
+    this.x -= val;
+    this.y -= val;
     return this;
   }
 
-  multiply(val: number) {
+  multiply(val: number | Vector2d) {
+    if (val instanceof Vector2d) {
+      this.x *= val.x;
+      this.y *= val.y;
+      return this;
+    }
     this.x *= val;
     this.y *= val;
     return this;
   }
 
-  divide(val: number) {
+  divide(val: number | Vector2d) {
+    if (val instanceof Vector2d) {
+      this.x /= val.x;
+      this.y /= val.y;
+      return this;
+    }
     this.x /= val;
     this.y /= val;
     return this;
