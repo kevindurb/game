@@ -2,6 +2,7 @@ import { Compositor } from '../Compositor.js';
 import type { GameState } from '../GameState.js';
 import { KeyState, KeyboardInput, Keys } from '../KeyboardInput.js';
 import type { VideoBuffer } from '../VideoBuffer.js';
+import { HUD } from '../entities/HUD.js';
 import { MyShip } from '../entities/MyShip.js';
 import { SpaceBackground } from '../entities/SpaceBackground.js';
 
@@ -18,6 +19,7 @@ export class Game {
     this.myShip = new MyShip(this.gameState);
 
     this.compositor.push(new SpaceBackground(this.gameState));
+    this.compositor.push(new HUD(this.gameState));
     this.compositor.push(this.myShip);
 
     this.setupInputMappings();

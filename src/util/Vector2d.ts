@@ -31,4 +31,9 @@ export class Vector2d {
   copy() {
     return new Vector2d(this.x, this.y);
   }
+
+  get amplitude() {
+    if (!this.x && !this.y) return 0;
+    return Math.sqrt((Math.abs(this.x) ^ 2) + (Math.abs(this.y) ^ 2));
+  }
 }
