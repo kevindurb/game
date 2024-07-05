@@ -36,10 +36,16 @@ export class MyShip implements IDrawable {
     if (rotation.degrees > 360) rotation.degrees -= 360;
     if (rotation.degrees < 0) rotation.degrees += 360;
 
-    if (velocity.x > 0)
-      velocity.x = Math.max(velocity.x - SLOW_DOWN * deltaTime, 0);
-    if (velocity.y > 0)
-      velocity.y = Math.max(velocity.y - SLOW_DOWN * deltaTime, 0);
+    const drag = new Vector2d(
+      velocity.x > 0
+        ? Math.min(SLOW_DOWN * deltaTime, velocity.x)
+        : -Math.min(SLOW_DOWN * deltaTime, Math.abs(velocity.x)),
+      velocity.y > 0
+        ? Math.min(SLOW_DOWN * deltaTime, velocity.y)
+        : -Math.min(SLOW_DOWN * deltaTime, Math.abs(velocity.y)),
+    );
+
+    velocity.subtract(drag);
   }
 
   setAccelForward() {
