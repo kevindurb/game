@@ -5,6 +5,7 @@ import { Vector2d } from '../util/Vector2d.js';
 
 const ROTATION_VELOCITY = 200;
 const MAX_THRUST = 100;
+const SLOW_DOWN = 10;
 
 export class MyShip implements IDrawable {
   private size = new Vector2d(48, 64);
@@ -34,6 +35,11 @@ export class MyShip implements IDrawable {
     rotation.degrees += rotationDelta;
     if (rotation.degrees > 360) rotation.degrees -= 360;
     if (rotation.degrees < 0) rotation.degrees += 360;
+
+    if (velocity.x > 0)
+      velocity.x = Math.max(velocity.x - SLOW_DOWN * deltaTime, 0);
+    if (velocity.y > 0)
+      velocity.y = Math.max(velocity.y - SLOW_DOWN * deltaTime, 0);
   }
 
   setAccelForward() {
